@@ -1,4 +1,8 @@
 
+<!-- 
+Muhammed Mert Sayan - 2212721028
+Nahit Furkan Öznamlı - 2212721020 
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,31 +16,67 @@
             margin: 0;
             padding: 0;
             width: 100%;
-            background-color: #f4f4f4;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: #fff;
         }
-    
+
         .container {
-            width: 80%;  /* Sağ ve soldaki boşlukları azaltıyoruz */
+            width: 80%;
             margin: 0 auto;
             padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
-    
-        #imageContainer img {
-            max-width: 100%;
-            height: auto;
-            margin-top: 20px;
-            display: block;
-            max-height: 400px;  /* Fotoğrafın yüksekliğini sınırlıyoruz */
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #ffdf00;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
         }
-    
-        #camera {
-            margin-top: 20px;
+
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #ffd700;
+        }
+
+        #fileInput, select, button {
+            padding: 10px 15px;
+            font-size: 1rem;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+            margin: 10px 0;
+            cursor: pointer;
+        }
+
+        button {
+            background-color: #ff5722;
+            color: #fff;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background-color: #e64a19;
+            transform: scale(1.05);
+        }
+
+        #fileInput {
+            background-color: #fff;
+            color: #333;
+            width: 80%;
+            max-width: 300px;
+        }
+
+        select {
             width: 100%;
             max-width: 300px;
-            margin-bottom: 20px;
+            background-color: #fff;
+            color: #333;
         }
-    
-        /* Düzenlemeleri tek satırda olacak şekilde yapıyoruz */
+
         .section-container {
             display: flex;
             justify-content: space-between;
@@ -44,41 +84,43 @@
             margin-top: 20px;
             flex-wrap: wrap;
         }
-    
+
         .section {
             text-align: center;
             flex: 1;
-            max-width: 400px;
+            max-width: 700px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
         }
-    
-        .section select, .section button {
-            width: 100%;
-            max-width: 300px;
-        }
-    
+
         .image-and-filter {
             display: flex;
             justify-content: center;
-            align-items: center;
-            gap: 10px;  /* Aradaki boşluğu azaltıyoruz */
-            margin-top: 20px;
+            align-items: flex-start;
+            gap: 20px;
+            margin-top: 30px;
+            flex-wrap: wrap;
         }
-    
+
         .image-container, .filter-container {
-            width: 45%;  /* Her iki alanı eşit genişlikte yerleştir */
+            width: 45%;
             max-width: 500px;
-            max-height: 400px;  /* Yüklenen ve filtrelenen fotoğrafın yüksekliğini sınırlıyoruz */
-            overflow: hidden;  /* Fotoğraf taşarsa gizlenir */
+            overflow: hidden;
+            border: 2px solid #ffd700;
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.1);
+            padding: 10px;
         }
-    
-        .image-container img, .filter-container img {
+
+        img {
             width: 100%;
-            height: auto;  /* Fotoğrafların boyutlarını düzgün tutuyoruz */
-            max-height: 100%;
-            object-fit: contain;  /* Fotoğrafın doğru şekilde görünmesini sağlıyoruz */
+            height: auto;
+            display: block;
+            border-radius: 5px;
         }
     </style>
-    
 </head>
 <body>
 
@@ -90,7 +132,7 @@
     <input type="file" id="fileInput" accept="image/*">
     <button onclick="uploadImage()">Resim Yükle</button>
 
-    <!-- Camera and Filter Section (Yan Yana Yerleştirildi) -->
+    <!-- Camera and Filter Section -->
     <div class="section-container">
         <!-- Camera Section -->
         <div class="section">
@@ -113,19 +155,18 @@
                 <option value="harris">Harris</option>
                 <option value="shi-tomasi">Shi-Tomasi</option>
                 <option value="gaussian_blur">Gaussian Blur</option>
-<option value="median_blur">Median Blur</option>
-<option value="bilateral_filter">Bilateral Filter</option>
-<option value="box_blur">Box Blur</option>
-<option value="contour_detection">Contour Detection</option>
-<option value="hough_transform">Hough Transform</option>
-<option value="histogram_equalization">Histogram Equalization</option>
-
+                <option value="median_blur">Median Blur</option>
+                <option value="bilateral_filter">Bilateral Filter</option>
+                <option value="box_blur">Box Blur</option>
+                <option value="contour_detection">Contour Detection</option>
+                <option value="hough_transform">Hough Transform</option>
+                <option value="histogram_equalization">Histogram Equalization</option>
             </select>
             <button onclick="applyFilter()">Uygula</button>
         </div>
     </div>
 
-    <!-- Fotoğraf ve Filtreyi Yan Yana Getiren Alan -->
+    <!-- Image and Filter Display Section -->
     <div class="image-and-filter">
         <div class="image-container">
             <h2>Orijinal Fotoğraf</h2>
@@ -138,6 +179,15 @@
         </div>
     </div>
 </div>
+
+<script>
+    // JavaScript Kodları Buraya Gelecek
+    startCamera();
+</script>
+
+</body>
+</html>
+
 
 <script>
     // Initialize camera and show the live feed

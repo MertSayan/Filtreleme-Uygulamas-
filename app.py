@@ -1,4 +1,6 @@
 
+#Muhammed Mert Sayan - 2212721028
+#Nahit Furkan Öznamlı - 2212721020
 
 from flask import Flask, render_template, request, jsonify
 import os
